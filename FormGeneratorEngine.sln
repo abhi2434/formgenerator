@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormGeneratorEngine", "FormGeneratorEngine\FormGeneratorEngine.csproj", "{A7B5FF8E-6FB9-4CFF-9383-193C3E636D12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTestApp", "SampleTestApp\SampleTestApp.csproj", "{4A613BF9-C346-40E3-A838-BD89F1C53C21}"
+EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs20
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FormGeneratorEngine\\FormGeneratorEngine.csproj
+		SccProjectName1 = FormGeneratorEngine
+		SccLocalPath1 = FormGeneratorEngine
+		SccProjectUniqueName2 = SampleTestApp\\SampleTestApp.csproj
+		SccProjectName2 = SampleTestApp
+		SccLocalPath2 = SampleTestApp
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,6 +27,10 @@ Global
 		{A7B5FF8E-6FB9-4CFF-9383-193C3E636D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7B5FF8E-6FB9-4CFF-9383-193C3E636D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7B5FF8E-6FB9-4CFF-9383-193C3E636D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A613BF9-C346-40E3-A838-BD89F1C53C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A613BF9-C346-40E3-A838-BD89F1C53C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A613BF9-C346-40E3-A838-BD89F1C53C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A613BF9-C346-40E3-A838-BD89F1C53C21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

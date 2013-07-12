@@ -99,6 +99,69 @@ namespace FormGeneratorEngine.Expressions
             return GetEnumerator();
         }
 
+        public List<FormulaToken> GetInfixToPostfix()
+        {
+            List<FormulaToken> actualtokens = this.tokens;
+            List<FormulaToken> postFix = new List<FormulaToken>();
+            FormulaToken arrival;
+            Stack<FormulaToken> oprerator = new Stack<FormulaToken>();
+            foreach (FormulaToken ftoken in actualtokens)
+            {
+                if (ftoken.Type == FormulaTokenType.Operand)
+                    postFix.Add(ftoken);
+                else if (ftoken.Type == FormulaTokenType.Subexpression && ftoken.Value == "(")
+                    oprerator.Push(ftoken);
+                else if (ftoken.Type == FormulaTokenType.Subexpression && ftoken.Value == ")")
+                {
+                    arrival = oprerator.Pop();
+                    while (arrival.Type != FormulaTokenType.Subexpression)
+                    {
+                        postFix.Add(arrival);
+                        arrival = oprerator.Pop();
+                    }
+                }
+                else
+                {
+                    if (oprerator.Count != 0 && this.Predecessor(oprerator.Peek(), ftoken))//If find an operator
+                    {
+                        arrival = oprerator.Pop();
+                        while (this.Predecessor(arrival, ftoken))
+                        {
+                            postFix.Add(arrival);
+
+                            if (oprerator.Count == 0)
+                                break;
+
+                            arrival = oprerator.Pop();
+                        }
+                        oprerator.Push(ftoken);
+                    }
+                    else
+                        oprerator.Push(ftoken);//If Stack is empty or the operator has precedence 
+                }
+            }
+            while (oprerator.Count > 0)
+            {
+                arrival = oprerator.Pop();
+                postFix.Add(arrival);
+            }
+
+            return postFix;
+        }
+        private bool Predecessor(FormulaToken firstOperator, FormulaToken secondOperator)
+        {
+            string opString = "(+-*/%";
+            
+            int firstPoint, secondPoint;
+
+            int[] precedence = { 0, 12, 12, 13, 13, 13 };// "(" has less prececence
+
+            firstPoint = opString.IndexOf(firstOperator.Value);
+            secondPoint = opString.IndexOf(secondOperator.Value);
+
+            return (precedence[firstPoint] >= precedence[secondPoint]) ? true : false;
+        }
+
         private void ParseToTokens()
         {
 
